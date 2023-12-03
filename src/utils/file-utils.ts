@@ -5,7 +5,7 @@ export class FileUtils {
   public static mapFileToList<T>(
     dir: string,
     filename: string,
-    mappingFunction: (line: string) => T,
+    mappingFunction: (line: string, index?: number) => T,
   ): T[] {
     const path: string = join(dir, filename);
     return readFileSync(path, "utf-8")
