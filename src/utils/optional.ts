@@ -41,17 +41,14 @@ export class Optional<T> {
     return isOptional(value) ? value : Optional.of(value);
   }
 
-  public mapIfNotPresent(callback: () => Optional<T>): Optional<T>;
-  public mapIfNotPresent(callback: () => T): Optional<T>;
-  public mapIfNotPresent(
-    callback: (() => T) | (() => Optional<T>),
-  ): Optional<T> {
+  public orElse(newValue: Optional<T>): Optional<T>;
+  public orElse(newValue: T): Optional<T>;
+  public orElse(newValue: T | Optional<T>): Optional<T> {
     if (this.isPresent()) {
       return this;
     }
 
-    const value: Optional<T> | T = callback();
-    return isOptional(value) ? value : Optional.of(value);
+    return isOptional(newValue) ? newValue : Optional.of(newValue);
   }
 
   public get(): T {

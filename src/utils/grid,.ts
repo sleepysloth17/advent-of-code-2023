@@ -95,7 +95,7 @@ export class Grid<T> {
   ): Optional<Cell<T>> {
     return this.getRow(coOrdinate)
       .mapIfPresent((row: Row<T>) => row.getPreviousCell(coOrdinate))
-      .mapIfNotPresent(() =>
+      .orElse(
         wrap
           ? this.getPreviousRow(coOrdinate).mapIfPresent((row: Row<T>) =>
               row.getLastCell(),
@@ -110,7 +110,7 @@ export class Grid<T> {
   ): Optional<Cell<T>> {
     return this.getRow(coOrdinate)
       .mapIfPresent((row: Row<T>) => row.getNextCell(coOrdinate))
-      .mapIfNotPresent(() =>
+      .orElse(
         wrap
           ? this.getNextRow(coOrdinate).mapIfPresent((row: Row<T>) =>
               row.getFirstCell(),
