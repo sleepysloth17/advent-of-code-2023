@@ -28,9 +28,9 @@ export class Optional<T> {
     return this._value !== null;
   }
 
-  public mapIfPresent<U>(callback: (value: T) => Optional<U>): Optional<U>;
-  public mapIfPresent<U>(callback: (value: T) => U): Optional<U>;
-  public mapIfPresent<U>(
+  public map<U>(callback: (value: T) => Optional<U>): Optional<U>;
+  public map<U>(callback: (value: T) => U): Optional<U>;
+  public map<U>(
     callback: ((value: T) => U) | ((value: T) => Optional<U>),
   ): Optional<U> {
     if (!this.isPresent()) {

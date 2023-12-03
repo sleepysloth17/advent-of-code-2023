@@ -84,7 +84,7 @@ export class Grid<T> {
   }
 
   public getCell(coOrdinate: CoOrdinate): Optional<Cell<T>> {
-    return this.getRow(coOrdinate).mapIfPresent((row: Row<T>) =>
+    return this.getRow(coOrdinate).map((row: Row<T>) =>
       row.getCell(coOrdinate),
     );
   }
@@ -94,10 +94,10 @@ export class Grid<T> {
     wrap: boolean = true,
   ): Optional<Cell<T>> {
     return this.getRow(coOrdinate)
-      .mapIfPresent((row: Row<T>) => row.getPreviousCell(coOrdinate))
+      .map((row: Row<T>) => row.getPreviousCell(coOrdinate))
       .orElse(
         wrap
-          ? this.getPreviousRow(coOrdinate).mapIfPresent((row: Row<T>) =>
+          ? this.getPreviousRow(coOrdinate).map((row: Row<T>) =>
               row.getLastCell(),
             )
           : Optional.empty(),
@@ -109,24 +109,22 @@ export class Grid<T> {
     wrap: boolean = true,
   ): Optional<Cell<T>> {
     return this.getRow(coOrdinate)
-      .mapIfPresent((row: Row<T>) => row.getNextCell(coOrdinate))
+      .map((row: Row<T>) => row.getNextCell(coOrdinate))
       .orElse(
         wrap
-          ? this.getNextRow(coOrdinate).mapIfPresent((row: Row<T>) =>
-              row.getFirstCell(),
-            )
+          ? this.getNextRow(coOrdinate).map((row: Row<T>) => row.getFirstCell())
           : Optional.empty(),
       );
   }
 
   public getCellAbove(coOrdinate: CoOrdinate): Optional<Cell<T>> {
-    return this.getPreviousRow(coOrdinate).mapIfPresent((row: Row<T>) =>
+    return this.getPreviousRow(coOrdinate).map((row: Row<T>) =>
       row.getCell(coOrdinate),
     );
   }
 
   public getCellBelow(coOrdinate: CoOrdinate): Optional<Cell<T>> {
-    return this.getNextRow(coOrdinate).mapIfPresent((row: Row<T>) =>
+    return this.getNextRow(coOrdinate).map((row: Row<T>) =>
       row.getCell(coOrdinate),
     );
   }
@@ -134,13 +132,13 @@ export class Grid<T> {
   public getDiagonalAbovePreviousCell(
     coOrdinate: CoOrdinate,
   ): Optional<Cell<T>> {
-    return this.getPreviousRow(coOrdinate).mapIfPresent((row: Row<T>) =>
+    return this.getPreviousRow(coOrdinate).map((row: Row<T>) =>
       row.getPreviousCell(coOrdinate),
     );
   }
 
   public getDiagonalAboveNextCell(coOrdinate: CoOrdinate): Optional<Cell<T>> {
-    return this.getPreviousRow(coOrdinate).mapIfPresent((row: Row<T>) =>
+    return this.getPreviousRow(coOrdinate).map((row: Row<T>) =>
       row.getNextCell(coOrdinate),
     );
   }
@@ -148,13 +146,13 @@ export class Grid<T> {
   public getDiagonalBelowPreviousCell(
     coOrdinate: CoOrdinate,
   ): Optional<Cell<T>> {
-    return this.getNextRow(coOrdinate).mapIfPresent((row: Row<T>) =>
+    return this.getNextRow(coOrdinate).map((row: Row<T>) =>
       row.getPreviousCell(coOrdinate),
     );
   }
 
   public getDiagonalBelowNextCell(coOrdinate: CoOrdinate): Optional<Cell<T>> {
-    return this.getNextRow(coOrdinate).mapIfPresent((row: Row<T>) =>
+    return this.getNextRow(coOrdinate).map((row: Row<T>) =>
       row.getNextCell(coOrdinate),
     );
   }
