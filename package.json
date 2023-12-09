@@ -14,6 +14,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/jsdom": "^21.1.6",
     "@types/node": "^20.10.1",
     "@typescript-eslint/eslint-plugin": "^6.13.1",
     "@typescript-eslint/parser": "^6.13.1",
@@ -28,5 +29,8 @@
   "lint-staged": {
     "*.ts": "eslint --cache --fix",
     "*.{ts}": "prettier --write"
+  },
+  "dependencies": {
+    "jsdom": "^23.0.1"
   }
 }

@@ -11,7 +11,7 @@ mkdir "${DAY_DIR}"
 # create ts file
 touch "${DAY_DIR}/index.ts"
 # create example file
-touch "${DAY_DIR}/example.txt"
+npm run start src/get-example-input.ts "${YEAR}" "${DAY}" "${DAY_DIR}"
 # create input file
 curl -X GET \
   -b "session=${ADVENT_OF_CODE_SESSION_COOKIE}" \
