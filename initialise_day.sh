@@ -4,7 +4,7 @@ DAY="${1}"
 YEAR=2023
 
 # todo: make this to properly zero pad
-DAY_DIR="src/day-0${DAY}"
+DAY_DIR="src/day-${DAY}"
 
 # create dir
 mkdir "${DAY_DIR}"
